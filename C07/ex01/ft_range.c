@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/28 23:32:16 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/28 23:49:14 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
 {
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+	int	index;
+	int	range;
+	int	*arrays;
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
-	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
-	}
-}
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
-
-	ft_rev_int_tab(arr, size);
-
-	for(int i = 0; i < size; i++)
-	{
-	printf("%d", arr[i]);
-			}
+	index = 0;
+	range = max - min;
+	if (range <= 0)
+		return (NULL);
+	arrays = (int *) malloc(range * sizeof(int));
+	while (min < max)
+		arrays[index++] = min++;
+	return (arrays);
 }

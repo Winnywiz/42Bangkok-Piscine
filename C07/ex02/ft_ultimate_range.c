@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/28 23:42:55 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/28 23:50:47 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+	int	index;
+	int	nb_len;
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
+	index = 0;
+	nb_len = max - min;
+	if (nb_len <= 0)
 	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
+		*range = NULL;
+		return (0);
 	}
-}
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
-
-	ft_rev_int_tab(arr, size);
-
-	for(int i = 0; i < size; i++)
-	{
-	printf("%d", arr[i]);
-			}
+	*range = (int *) malloc(nb_len * sizeof(int));
+	while (index < nb_len)
+		range[0][index++] = min++;
+	return (nb_len);
 }

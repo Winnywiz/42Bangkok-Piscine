@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/18 23:29:18 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/19 00:15:31 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+	unsigned char	*_s1;
+	unsigned char	*_s2;
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
+	_s1 = (unsigned char *) s1;
+	_s2 = (unsigned char *) s2;
+	while (*_s1 != '\0' || *_s2 != '\0')
 	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
+		if (*_s1 != *_s2)
+		{
+			break ;
+		}
+		_s1++;
+		_s2++;
 	}
-}
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
-
-	ft_rev_int_tab(arr, size);
-
-	for(int i = 0; i < size; i++)
-	{
-	printf("%d", arr[i]);
-			}
+	return (*_s1 - *_s2);
 }

@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   central.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/31 06:50:04 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/31 14:23:13 by ludomsak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+#ifndef CENTRAL_H
+# define CENTRAL_H
+# include "ft_map.h"
+# include "ft.h"
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
-	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
-	}
-}
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
+void	print_summary(t_map *map, int max_length);
+void	build_square(t_map *map, int x, int y, int size);
+void	compute_square(t_map *map);
+int		search_square(int fd);
+int		**fill_matrix(t_map *map);
 
-	ft_rev_int_tab(arr, size);
-
-	for(int i = 0; i < size; i++)
-	{
-	printf("%d", arr[i]);
-			}
-}
+#endif

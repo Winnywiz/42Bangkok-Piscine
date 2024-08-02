@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/08/01 22:56:04 by skanin            #+#    #+#             */
+/*   Updated: 2024/08/01 22:57:17 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+#include <unistd.h>
+
+int	ft_strlen(char *str)
 {
-	int	*start;
-	int	*end;
-	int	decay;
 	int	i;
 
 	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
-	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
+	while (str[i] != '\0')
 		i++;
-	}
+
+	return (i);
 }
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
 
-	ft_rev_int_tab(arr, size);
-
-	for(int i = 0; i < size; i++)
-	{
-	printf("%d", arr[i]);
-			}
+void	ft_putstr(char *str)
+{
+	write(1, str, ft_strlen(str));
 }

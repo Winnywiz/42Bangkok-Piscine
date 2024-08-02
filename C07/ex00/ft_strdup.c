@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/28 23:08:46 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/28 23:41:40 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+#include <stdlib.h>
+
+int	ft_strlen(char *src)
 {
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+	int	length;
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
+	length = 0;
+	while (src[length] != '\0')
 	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
+		length++;
 	}
+	return (length);
 }
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
 
-	ft_rev_int_tab(arr, size);
+char	*ft_strdup(char *src)
+{
+	int		index;
+	char	*new_ptr;
 
-	for(int i = 0; i < size; i++)
+	new_ptr = (char *) malloc(ft_strlen(src) + 1);
+	index = 0;
+	while (src[index] != '\0')
 	{
-	printf("%d", arr[i]);
-			}
+		new_ptr[index] = src[index];
+		index++;
+	}
+	new_ptr[index] = '\0';
+	return (new_ptr);
 }

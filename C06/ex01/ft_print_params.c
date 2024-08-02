@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:26:38 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/15 18:38:40 by skanin           ###   ########.fr       */
+/*   Created: 2024/07/27 20:16:56 by skanin            #+#    #+#             */
+/*   Updated: 2024/07/28 21:45:06 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+#include <unistd.h>
+
+int	ft_strlen(char *str)
 {
-	int	*start;
-	int	*end;
-	int	decay;
-	int	i;
+	int	length;
 
-	i = 0;
-	start = tab;
-	end = tab + size - 1;
-	while (start < end)
+	length = 0;
+	while (str[length] != '\0')
 	{
-		decay = *start;
-		*start = *end;
-		*end = decay;
-		start++;
-		end--;
-		i++;
+		length++;
 	}
+	return (length);
 }
-#include <stdio.h>
-int	main(){
-	int arr[] = {1,2,3,4};
-	int size = 4;
 
-	ft_rev_int_tab(arr, size);
+int	main(int size, char *params[])
+{
+	int	index;
 
-	for(int i = 0; i < size; i++)
+	index = 1;
+	while (index < size)
 	{
-	printf("%d", arr[i]);
-			}
+		write(1, params[index], ft_strlen(params[index]));
+		write(1, "\n", 1);
+		index++;
+	}
+	return (0);
 }

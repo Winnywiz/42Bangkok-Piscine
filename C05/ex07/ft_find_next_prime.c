@@ -6,7 +6,7 @@
 /*   By: skanin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:27:03 by skanin            #+#    #+#             */
-/*   Updated: 2024/07/26 16:37:02 by skanin           ###   ########.fr       */
+/*   Updated: 2024/07/27 21:16:47 by skanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,10 @@ int	ft_find_next_prime(int nb)
 		nb++;
 	}
 	return (nb);
+}
+
+#include <stdio.h>
+int	main(void)
+{
+	printf("%d", ft_find_next_prime(2147446));
 }
